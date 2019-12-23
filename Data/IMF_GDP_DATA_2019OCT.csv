@@ -7293,7 +7293,6 @@ WEO Country Code,ISO,WEO Subject Code,Subject Descriptor,Units,Scale,2019
 299,VEN,NGDPD,"Gross domestic product, current prices",U.S. dollars,Billions,70.14
 299,VEN,NGDPDPC,"Gross domestic product per capita, current prices",U.S. dollars,Units,"2,547.76"
 299,VEN,PCPI,"Inflation, average consumer prices",Index,,"36,548,558,046.45"
-299,VEN,PCPIPCH,"Inflation, average consumer prices",Percent change,,"200,000.00"
 299,VEN,PCPIE,"Inflation, end of period consumer prices",Index,,"221,305,697,950.20"
 299,VEN,PCPIEPCH,"Inflation, end of period consumer prices",Percent change,,"200,000.00"
 299,VEN,TM_RPCH,Volume of imports of goods and services,Percent change,,-52.762
