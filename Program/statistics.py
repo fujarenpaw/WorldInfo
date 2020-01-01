@@ -9,6 +9,37 @@ IMF_TARGET_COL = "2019"
 
 def main():
     IMF_data_view()
+    OECD_data_view()
+
+
+# OECDのデータにある統計情報を描画する
+def OECD_data_view():
+    # OECDデータ読み込み
+    path = r"..\Data\OECD_HELTH_EXPENDITURE_2019NOV.csv"
+    df = pd.read_csv(path)
+
+    # 1つの国で日付の異なる複数のデータがあるため、古い重複データは削除
+    df = df[df["Unit"] == "US Dollar"]
+    df = df.drop_duplicates(['Country'], keep='last')
+
+    # 世界地図を作製
+    m = folium.Map(location=[50, 0], zoom_start=1)
+
+    # 地図に色を塗る
+    folium.Choropleth(
+        geo_data=geojson,
+        name='choropleth',
+        data=df,  # 描画データ
+        columns=['LOCATION', 'Value'],  # ["国コード", "値の列"]
+        key_on='feature.id',
+        fill_color='YlOrBr',  # 色指定
+        bins=[0, 200, 400, 600, 800, 1000, 1500, 4000],  # 閾値
+        # bins=8,
+        fill_opacity=0.7,  # 色の透明度
+        line_opacity=1,  # 国境線の透明度
+        legend_name='Health Expenditure(US dollar)'  # 凡例
+    ).add_to(m)
+    m.save("Health_Expenditure.html")
 
 
 # IMFのデータにある統計情報を描画する
